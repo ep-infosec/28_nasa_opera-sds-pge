@@ -1,0 +1,42 @@
+#
+# Yamale schema applicable to the PGE section of all RunConfigs
+#
+
+RunConfig:
+  Name: str()
+
+  Groups:
+    PGE:
+      PGENameGroup:
+        PGEName: str(required=True)
+
+      InputFilesGroup:
+        InputFilePaths: list(str(), min=1, required=True)
+
+      DynamicAncillaryFilesGroup:
+        AncillaryFileMap: map(str(), key=str(), min=0)
+
+      ProductPathGroup:
+        OutputProductPath: str(required=True)
+        ScratchPath: str(required=True)
+
+      PrimaryExecutable:
+        ProductIdentifier: str(required=False)
+        ProductVersion: num(required=False)
+        CompositeReleaseID: str(required=False)
+        ProgramPath: str(required=True)
+        ProgramOptions: list(str(), min=0, required=False)
+        ErrorCodeBase: int(required=True)
+        SchemaPath: str(required=True)
+        IsoTemplatePath: str(required=False)
+
+      QAExecutable:
+        Enabled: bool(required=True)
+        ProgramPath: str(required=False)
+        ProgramOptions: list(str(), min=0, required=False)
+
+      DebugLevelGroup:
+        DebugSwitch: bool(required=False)
+        ExecuteViaShell: bool(required=False)
+
+    SAS: include('sas_configuration', required=False)

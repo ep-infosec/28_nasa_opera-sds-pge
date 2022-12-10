@@ -1,0 +1,13 @@
+flake8
+flake8-docstrings
+flake8-import-order
+hdf5
+h5py
+Jinja2
+jsonschema
+mgrs
+PyYAML
+pylint==2.12.2
+pytest
+pytest-cov
+yamale
